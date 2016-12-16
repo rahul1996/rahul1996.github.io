@@ -1,7 +1,8 @@
 $(function(){
 	'use strict';
 	
-	var portfolio = $('.portfolio-items');
+	var portfolio = $('.portfolio-items'),
+		blog = $('.posts-grid');
 	
 	$('html').removeClass('no-js').addClass('js');
 	
@@ -34,11 +35,20 @@ $(function(){
 		
 		$('body').addClass('loaded');
 		
+		
+		var sect = window.location.hash;
+		if ( $(sect).length == 1 ){
+			$('.section.active').removeClass('active');
+			$(sect).addClass('active');
+		}
+		
+		
 		/*=========================================================================
 			Portfolio Grid
 		=========================================================================*/
 		setTimeout(function(){
 			portfolio.shuffle();
+			blog.shuffle();
 		}, 1000);
 		
 		$('.portfolio-filters > li > a').on('click', function (e) {
@@ -69,6 +79,7 @@ $(function(){
 		=========================================================================*/
 		setTimeout(function(){
 			portfolio.shuffle('update');
+			blog.shuffle('update');
 		},1000);
 		
 	});
@@ -83,7 +94,7 @@ $(function(){
 	});
 	
 	$('.menu-items > ul > li > a, .section-toggle').on('click', function(e){
-		e.preventDefault();
+		
 		var $this = $(this),
 			section = $( '#' + $this.data('section') );
 		if( section.length != 0 ){
@@ -96,6 +107,7 @@ $(function(){
 		
 		setTimeout(function(){
 			portfolio.shuffle();
+			blog.shuffle();
 		}, 1000);
 		
 	});
@@ -180,6 +192,5 @@ $(function(){
 			});
 		}
 	});
-	
 	
 });

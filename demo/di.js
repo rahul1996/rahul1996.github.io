@@ -14,7 +14,7 @@ var ID = function () {
     // after the decimal.
     return '_' + Math.random().toString(36).substr(2, 9);
   };
-var client = new Paho.Client('bot.akriya.co.in', 8083, `clientId-boxing_${ID}`);
+var client = new Paho.Client('bot.akriya.co.in', 1883, `clientId-boxing_${ID}`);
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
